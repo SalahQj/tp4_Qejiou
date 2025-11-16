@@ -12,8 +12,7 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- Version corrigée : 0.36.2 au lieu de 1.5.0 -->
-        <langchain4j.version>0.36.2</langchain4j.version>
+        <langchain4j.version>0.35.0</langchain4j.version>
     </properties>
 
     <dependencies>
@@ -24,7 +23,7 @@
             <version>${langchain4j.version}</version>
         </dependency>
 
-        <!-- 2. Connecteur Gemini (pour le ChatModel) -->
+        <!-- 2. Connecteur Gemini -->
         <dependency>
             <groupId>dev.langchain4j</groupId>
             <artifactId>langchain4j-google-ai-gemini</artifactId>
@@ -34,21 +33,28 @@
         <!-- 3. Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-jdk14</artifactId>
-            <version>2.0.17</version>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.9</version>
         </dependency>
 
-        <!-- 4. NOUVEAU : Lecteur de PDF (Apache Tika) -->
+        <!-- 4. Parser Apache Tika pour PDF -->
         <dependency>
             <groupId>dev.langchain4j</groupId>
             <artifactId>langchain4j-document-parser-apache-tika</artifactId>
             <version>${langchain4j.version}</version>
         </dependency>
 
-        <!-- 5. NOUVEAU : Modèle d'embedding LOCAL -->
+        <!-- 5. Modèle d'embedding local -->
         <dependency>
             <groupId>dev.langchain4j</groupId>
             <artifactId>langchain4j-embeddings-all-minilm-l6-v2</artifactId>
+            <version>${langchain4j.version}</version>
+        </dependency>
+
+        <!-- 6. Store d'embeddings en mémoire -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-embeddings</artifactId>
             <version>${langchain4j.version}</version>
         </dependency>
     </dependencies>
