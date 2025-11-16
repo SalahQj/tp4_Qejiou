@@ -22,14 +22,33 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Scanner;
 
+// NOUVEAU (Test 2) : Imports pour le logging détaillé
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
- * Classe principale pour le Test 1 du TP 4 : RAG "Naïf" décomposé.
+ * Classe principale pour le Test 1 & 2 du TP 4 : RAG "Naïf" décomposé avec Logging.
  */
 public class RagNaif {
 
+    // NOUVEAU (Test 2) : Méthode pour configurer le logging
+    private static void configureLogger() {
+        // Configure le logger sous-jacent (java.util.logging)
+        Logger packageLogger = Logger.getLogger("dev.langchain4j");
+        packageLogger.setLevel(Level.FINE); // Ajuster niveau
+        // Ajouter un handler pour la console pour faire afficher les logs
+        ConsoleHandler handler = new ConsoleHandler();
+        handler.setLevel(Level.FINE);
+        packageLogger.addHandler(handler);
+    }
+
     public static void main(String[] args) {
 
-        System.out.println("Début du RAG Naïf (Test 1)...");
+        // NOUVEAU (Test 2) : Activer le logger
+        configureLogger();
+
+        System.out.println("Début du RAG Naïf (Test 2 avec Logging)...");
 
         // --- PHASE 1 : INGESTION (Chargement des connaissances) ---
         System.out.println("Phase 1 : Ingestion du document PDF...");
@@ -81,9 +100,12 @@ public class RagNaif {
         }
 
         // 7. Créer le ChatModel (Gemini)
+        // Note : logRequests() et logResponses() ne sont pas disponibles en 0.35.0
+        // Le logging est géré via configureLogger() ci-dessus
         ChatLanguageModel chatModel = GoogleAiGeminiChatModel.builder()
                 .apiKey(geminiApiKey)
                 .modelName("gemini-2.5-flash")
+                .temperature(0.3) // Température basse pour le RAG
                 .build();
         System.out.println("ChatModel Gemini chargé.");
 
