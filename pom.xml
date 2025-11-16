@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ma.emsi.QejiouSalaheddine.tp4</groupId>
+    <groupId>ma.emsi.qejiousalaheddine.tp4</groupId>
     <artifactId>tp4-rag-tests</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -12,6 +12,45 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Version corrigée : 0.36.2 au lieu de 1.5.0 -->
+        <langchain4j.version>0.36.2</langchain4j.version>
     </properties>
-    
+
+    <dependencies>
+        <!-- 1. Cœur LangChain4j -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j</artifactId>
+            <version>${langchain4j.version}</version>
+        </dependency>
+
+        <!-- 2. Connecteur Gemini (pour le ChatModel) -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-google-ai-gemini</artifactId>
+            <version>${langchain4j.version}</version>
+        </dependency>
+
+        <!-- 3. Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>2.0.17</version>
+        </dependency>
+
+        <!-- 4. NOUVEAU : Lecteur de PDF (Apache Tika) -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-document-parser-apache-tika</artifactId>
+            <version>${langchain4j.version}</version>
+        </dependency>
+
+        <!-- 5. NOUVEAU : Modèle d'embedding LOCAL -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-embeddings-all-minilm-l6-v2</artifactId>
+            <version>${langchain4j.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>
